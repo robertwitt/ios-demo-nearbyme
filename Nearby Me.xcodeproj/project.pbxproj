@@ -12,6 +12,8 @@
 		4BB6FB7B21D2C46B00AC1ABA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4BB6FB7921D2C46B00AC1ABA /* Main.storyboard */; };
 		4BB6FB7D21D2C46D00AC1ABA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4BB6FB7C21D2C46D00AC1ABA /* Assets.xcassets */; };
 		4BB6FB8021D2C46D00AC1ABA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4BB6FB7E21D2C46D00AC1ABA /* LaunchScreen.storyboard */; };
+		4BB6FB8B21D2C6EF00AC1ABA /* Landmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB6FB8A21D2C6EF00AC1ABA /* Landmark.swift */; };
+		4BB6FB8D21D2CF6A00AC1ABA /* LandmarkFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB6FB8C21D2CF6A00AC1ABA /* LandmarkFinder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		4BB6FB7C21D2C46D00AC1ABA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4BB6FB7F21D2C46D00AC1ABA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4BB6FB8121D2C46D00AC1ABA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4BB6FB8A21D2C6EF00AC1ABA /* Landmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Landmark.swift; sourceTree = "<group>"; };
+		4BB6FB8C21D2CF6A00AC1ABA /* LandmarkFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkFinder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +88,8 @@
 		4BB6FB8921D2C4EC00AC1ABA /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				4BB6FB8A21D2C6EF00AC1ABA /* Landmark.swift */,
+				4BB6FB8C21D2CF6A00AC1ABA /* LandmarkFinder.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -160,7 +166,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				4BB6FB7821D2C46B00AC1ABA /* ViewController.swift in Sources */,
+				4BB6FB8D21D2CF6A00AC1ABA /* LandmarkFinder.swift in Sources */,
 				4BB6FB7621D2C46B00AC1ABA /* AppDelegate.swift in Sources */,
+				4BB6FB8B21D2C6EF00AC1ABA /* Landmark.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
