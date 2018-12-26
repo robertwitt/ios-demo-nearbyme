@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 import CoreLocation
 
 class LandmarkFinder {
@@ -29,11 +30,15 @@ class LandmarkFinder {
         }
     }
     
-    func search(aroundLocation location: CLLocation, inRadius radius: CLLocationDistance, maxHits: Int, completion: (_ : [Landmark], _ : Error?) -> Void) {
+    func search(aroundLocation location: CLLocation, inRadius radius: CLLocationDistance, maxHits: Int, completion: (_: [Landmark], _: Error?) -> Void) {
         //TODO: Invoke service URL
         
         let landmarks = self.mockLandmarks
         completion(landmarks, nil)
+    }
+    
+    func loadImage(atUrl url: URL, completion: (_: UIImage?, _: Error?) -> Void) {
+        // TODO: Invoke URL and return image in closure
     }
     
 }

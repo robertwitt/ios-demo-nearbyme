@@ -12,7 +12,7 @@ import CoreLocation
 
 class LandmarkViewController: UIViewController, CLLocationManagerDelegate {
     
-    //MARK: - Properties & Outlets
+    //MARK: Properties & Outlets
     
     private let locationManager = CLLocationManager()
     private let landmarkFinder = LandmarkFinder()
@@ -37,14 +37,15 @@ class LandmarkViewController: UIViewController, CLLocationManagerDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
     
-    //MARK: - View Lifecycle
+    //MARK: View Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        registerMapAnnotationViews()
         enableLocationService()
     }
     
-    //MARK: - Actions
+    //MARK: Actions
     
     @IBAction func locateTapped(_ sender: UIBarButtonItem) {
         
@@ -54,7 +55,7 @@ class LandmarkViewController: UIViewController, CLLocationManagerDelegate {
         
     }
     
-    //MARK: - Manage Locations
+    //MARK: Manage Locations
     
     private func enableLocationService() {
         locationManager.delegate = self
@@ -88,9 +89,14 @@ class LandmarkViewController: UIViewController, CLLocationManagerDelegate {
         self.present(alert, animated: true)
     }
     
-    //MARK: - Manage Landmarks
+    //MARK: Manage Landmarks
+    
+    private func registerMapAnnotationViews() {
+        mapView.register(MKPinAnnotationView.self, forAnnotationViewWithReuseIdentifier: "Landmark")
+    }
     
     private func startFindingLandmarksInLocation(_ location: CLLocation) {
+        networkActivityEnabled = true
         let radius = self.mapRadius
         let maxHits = 10
         landmarkFinder.search(aroundLocation: location, inRadius: radius, maxHits: maxHits) { (landmarks, error) in
@@ -99,6 +105,7 @@ class LandmarkViewController: UIViewController, CLLocationManagerDelegate {
             } else {
                 self.addLandmarksToMap(landmarks)
             }
+            self.networkActivityEnabled = false
         }
     }
     
@@ -113,8 +120,30 @@ class LandmarkViewController: UIViewController, CLLocationManagerDelegate {
 extension LandmarkViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        let annotationView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: "Landmark")
+        guard !annotation.isKind(of: MKUserLocation.self) else {
+            return nil
+        }
+        let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "Landmark", for: annotation)
+        annotationView.canShowCallout = true
+        annotationView.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
         return annotationView
+    }
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        networkActivityEnabled = true
+        let landmark = view.annotation as! Landmark
+        landmarkFinder.loadImage(atUrl: landmark.thumbnailUrl!) { (image, error) in
+            if let error = error {
+                self.showAlertWithError(error)
+            } else {
+                view.image = image
+            }
+            networkActivityEnabled = false
+        }
+    }
+    
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        //TODO: Display landmark details
     }
     
 }

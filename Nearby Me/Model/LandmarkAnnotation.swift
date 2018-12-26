@@ -14,5 +14,9 @@ extension Landmark: MKAnnotation {
     var coordinate: CLLocationCoordinate2D {
         return location!.coordinate
     }
+    
+    var subtitle: String? {
+        return shortDescription
+    }
 
 }
