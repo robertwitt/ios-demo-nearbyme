@@ -17,15 +17,6 @@ class LandmarkMapViewController: UIViewController, CLLocationManagerDelegate {
     private let locationManager = CLLocationManager()
     private let landmarkFinder = LandmarkFinder()
     
-    private var networkActivityEnabled: Bool {
-        get {
-            return UIApplication.shared.isNetworkActivityIndicatorVisible
-        }
-        set(networkActivityEnabled) {
-            UIApplication.shared.isNetworkActivityIndicatorVisible = networkActivityEnabled
-        }
-    }
-    
     private var mapRadius: CLLocationDistance {
         get {
             let centerLocation = CLLocation(latitude: mapView.centerCoordinate.latitude, longitude: mapView.centerCoordinate.longitude)

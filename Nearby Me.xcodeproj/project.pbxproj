@@ -16,6 +16,7 @@
 		4BB6FB8D21D2CF6A00AC1ABA /* LandmarkFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB6FB8C21D2CF6A00AC1ABA /* LandmarkFinder.swift */; };
 		4BB6FB9121D3883B00AC1ABA /* LandmarkAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB6FB9021D3883B00AC1ABA /* LandmarkAnnotation.swift */; };
 		4BB6FB9321D4150800AC1ABA /* LandmarkDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB6FB9221D4150800AC1ABA /* LandmarkDetailViewController.swift */; };
+		4BB6FB9521D41CAA00AC1ABA /* ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB6FB9421D41CAA00AC1ABA /* ViewControllerExtension.swift */; };
 		806D7AC685816DAE0B10FDF4 /* Pods_Nearby_Me.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CD4FD2B2E24EEAC087A2E05 /* Pods_Nearby_Me.framework */; };
 /* End PBXBuildFile section */
 
@@ -32,6 +33,7 @@
 		4BB6FB8C21D2CF6A00AC1ABA /* LandmarkFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkFinder.swift; sourceTree = "<group>"; };
 		4BB6FB9021D3883B00AC1ABA /* LandmarkAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkAnnotation.swift; sourceTree = "<group>"; };
 		4BB6FB9221D4150800AC1ABA /* LandmarkDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkDetailViewController.swift; sourceTree = "<group>"; };
+		4BB6FB9421D41CAA00AC1ABA /* ViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerExtension.swift; sourceTree = "<group>"; };
 		7F08646761DBF1C17ACE0054 /* Pods-Nearby Me.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nearby Me.release.xcconfig"; path = "Pods/Target Support Files/Pods-Nearby Me/Pods-Nearby Me.release.xcconfig"; sourceTree = "<group>"; };
 		E049D502908AAD8A62A962D4 /* Pods-Nearby Me.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nearby Me.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Nearby Me/Pods-Nearby Me.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -82,6 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				4BB6FB7521D2C46B00AC1ABA /* AppDelegate.swift */,
+				4BB6FB9421D41CAA00AC1ABA /* ViewControllerExtension.swift */,
 				4BB6FB7721D2C46B00AC1ABA /* LandmarkMapViewController.swift */,
 				4BB6FB9221D4150800AC1ABA /* LandmarkDetailViewController.swift */,
 			);
@@ -240,6 +243,7 @@
 			files = (
 				4BB6FB7821D2C46B00AC1ABA /* LandmarkMapViewController.swift in Sources */,
 				4BB6FB8D21D2CF6A00AC1ABA /* LandmarkFinder.swift in Sources */,
+				4BB6FB9521D41CAA00AC1ABA /* ViewControllerExtension.swift in Sources */,
 				4BB6FB9121D3883B00AC1ABA /* LandmarkAnnotation.swift in Sources */,
 				4BB6FB9321D4150800AC1ABA /* LandmarkDetailViewController.swift in Sources */,
 				4BB6FB7621D2C46B00AC1ABA /* AppDelegate.swift in Sources */,
