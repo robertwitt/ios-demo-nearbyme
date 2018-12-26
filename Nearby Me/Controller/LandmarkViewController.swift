@@ -130,6 +130,9 @@ extension LandmarkViewController: MKMapViewDelegate {
     }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        guard !view.annotation!.isKind(of: MKUserLocation.self) else {
+            return
+        }
         networkActivityEnabled = true
         let landmark = view.annotation as! Landmark
         landmarkFinder.loadImage(atUrl: landmark.thumbnailUrl!) { (image, error) in

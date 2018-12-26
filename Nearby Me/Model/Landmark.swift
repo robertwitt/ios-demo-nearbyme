@@ -42,7 +42,7 @@ class Landmark: NSObject {
     
     var location: CLLocation? {
         get {
-            if let latitude = data[Landmark.keyCoordinates][Landmark.keyLatitude].double, let longitude = data[Landmark.keyCoordinates][Landmark.keyLongitude].double {
+            if let coordinates = data[Landmark.keyCoordinates].array?.first, let latitude = coordinates[Landmark.keyLatitude].double, let longitude = coordinates[Landmark.keyLongitude].double {
                 return CLLocation(latitude: latitude, longitude: longitude)
             } else {
                 return nil
