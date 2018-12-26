@@ -11,7 +11,7 @@ import CoreLocation
 
 class LandmarkFinder {
     
-    func search(aroundLocation location: CLLocation, inRadius radius: Int, maxHits: Int, completion: (_ : [Landmark], _ : Error) -> Void) {
+    func search(aroundLocation location: CLLocation, inRadius radius: Int, maxHits: Int, completion: (_ : [Landmark], _ : Error?) -> Void) {
         //TODO: Invoke service URL
     }
     

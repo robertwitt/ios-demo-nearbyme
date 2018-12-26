@@ -15,6 +15,7 @@ class LandmarkViewController: UIViewController, CLLocationManagerDelegate {
     //MARK: - Properties & Outlets
     
     private let locationManager = CLLocationManager()
+    private let landmarkFinder = LandmarkFinder()
     
     private var networkActivityEnabled: Bool {
         get {
@@ -22,6 +23,15 @@ class LandmarkViewController: UIViewController, CLLocationManagerDelegate {
         }
         set(networkActivityEnabled) {
             UIApplication.shared.isNetworkActivityIndicatorVisible = networkActivityEnabled
+        }
+    }
+    
+    private var mapRadius: CLLocationDistance {
+        get {
+            let centerLocation = CLLocation(latitude: mapView.centerCoordinate.latitude, longitude: mapView.centerCoordinate.longitude)
+            let topCenterCoordinate = mapView.convert(CGPoint(x: mapView.frame.size.width / 2.0, y: 0), toCoordinateFrom: mapView)
+            let topCenterLocation = CLLocation(latitude: topCenterCoordinate.latitude, longitude: topCenterCoordinate.longitude)
+            return centerLocation.distance(from: topCenterLocation)
         }
     }
 
@@ -78,6 +88,24 @@ class LandmarkViewController: UIViewController, CLLocationManagerDelegate {
         self.present(alert, animated: true)
     }
     
+    //MARK: - Manage Landmarks
+    
+    private func startFindingLandmarksInLocation(_ location: CLLocation) {
+        let radius = Int(self.mapRadius)
+        let maxHits = 10
+        landmarkFinder.search(aroundLocation: location, inRadius: radius, maxHits: maxHits) { (landmarks, error) in
+            if let error = error {
+                self.showAlertWithError(error)
+            } else {
+                self.addLandmarksToMap(landmarks)
+            }
+        }
+    }
+    
+    private func addLandmarksToMap(_ landmarks: [Landmark]) {
+        
+    }
+    
 }
 
 //MARK: - Location Manager Delegate
@@ -103,6 +131,7 @@ extension LandmarkViewController {
             mapView.setRegion(region, animated: true)
             mapView.showsUserLocation = true
             networkActivityEnabled = false
+            startFindingLandmarksInLocation(location)
         }
     }
     
