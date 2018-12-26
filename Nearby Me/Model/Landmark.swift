@@ -9,7 +9,7 @@
 import Foundation
 import CoreLocation
 
-class Landmark {
+class Landmark: NSObject {
     
     static let keyCoordinates = "coordinates"
     static let keyDistance = "dist"

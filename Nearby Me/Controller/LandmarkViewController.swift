@@ -103,7 +103,18 @@ class LandmarkViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     private func addLandmarksToMap(_ landmarks: [Landmark]) {
-        
+        mapView.addAnnotations(landmarks)
+    }
+    
+}
+
+//MARK: - Map View Delegate
+
+extension LandmarkViewController: MKMapViewDelegate {
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        //TODO: Implement point annotation view
+        return nil
     }
     
 }

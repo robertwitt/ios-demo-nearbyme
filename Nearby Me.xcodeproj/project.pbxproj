@@ -14,6 +14,7 @@
 		4BB6FB8021D2C46D00AC1ABA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4BB6FB7E21D2C46D00AC1ABA /* LaunchScreen.storyboard */; };
 		4BB6FB8B21D2C6EF00AC1ABA /* Landmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB6FB8A21D2C6EF00AC1ABA /* Landmark.swift */; };
 		4BB6FB8D21D2CF6A00AC1ABA /* LandmarkFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB6FB8C21D2CF6A00AC1ABA /* LandmarkFinder.swift */; };
+		4BB6FB9121D3883B00AC1ABA /* LandmarkAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB6FB9021D3883B00AC1ABA /* LandmarkAnnotation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		4BB6FB8121D2C46D00AC1ABA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4BB6FB8A21D2C6EF00AC1ABA /* Landmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Landmark.swift; sourceTree = "<group>"; };
 		4BB6FB8C21D2CF6A00AC1ABA /* LandmarkFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkFinder.swift; sourceTree = "<group>"; };
+		4BB6FB9021D3883B00AC1ABA /* LandmarkAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkAnnotation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				4BB6FB8A21D2C6EF00AC1ABA /* Landmark.swift */,
+				4BB6FB9021D3883B00AC1ABA /* LandmarkAnnotation.swift */,
 				4BB6FB8C21D2CF6A00AC1ABA /* LandmarkFinder.swift */,
 			);
 			path = Model;
@@ -167,6 +170,7 @@
 			files = (
 				4BB6FB7821D2C46B00AC1ABA /* LandmarkViewController.swift in Sources */,
 				4BB6FB8D21D2CF6A00AC1ABA /* LandmarkFinder.swift in Sources */,
+				4BB6FB9121D3883B00AC1ABA /* LandmarkAnnotation.swift in Sources */,
 				4BB6FB7621D2C46B00AC1ABA /* AppDelegate.swift in Sources */,
 				4BB6FB8B21D2C6EF00AC1ABA /* Landmark.swift in Sources */,
 			);
