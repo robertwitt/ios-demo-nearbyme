@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,16 +13,53 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Nearby_Me" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="kMB-j8-LUM">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                            </mapView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zdh-sn-oTY">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="wHA-mB-Su5"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem systemItem="refresh" id="SJo-Pl-hOz">
+                                        <connections>
+                                            <action selector="refreshMapTapped:" destination="BYZ-38-t0r" id="QKX-2F-iG5"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Sig-xr-P09"/>
+                                    <barButtonItem systemItem="search" id="45J-vp-XgZ">
+                                        <connections>
+                                            <action selector="locateTapped:" destination="BYZ-38-t0r" id="eOs-Av-Slu"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="kMB-j8-LUM" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="OZV-K1-PHT"/>
+                            <constraint firstAttribute="trailing" secondItem="zdh-sn-oTY" secondAttribute="trailing" id="Swb-bd-O4P"/>
+                            <constraint firstAttribute="bottom" secondItem="zdh-sn-oTY" secondAttribute="bottom" id="ZO0-lO-daA"/>
+                            <constraint firstAttribute="trailing" secondItem="kMB-j8-LUM" secondAttribute="trailing" id="eEP-mB-IEs"/>
+                            <constraint firstItem="zdh-sn-oTY" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="fIV-gh-ENH"/>
+                            <constraint firstItem="kMB-j8-LUM" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="xdd-in-8V8"/>
+                            <constraint firstItem="zdh-sn-oTY" firstAttribute="top" secondItem="kMB-j8-LUM" secondAttribute="bottom" id="yis-h1-xsP"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="kMB-j8-LUM" id="dy8-6G-wCQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="135.19999999999999" y="131.52709359605913"/>
         </scene>
     </scenes>
 </document>
