@@ -91,7 +91,7 @@ class LandmarkViewController: UIViewController, CLLocationManagerDelegate {
     //MARK: - Manage Landmarks
     
     private func startFindingLandmarksInLocation(_ location: CLLocation) {
-        let radius = Int(self.mapRadius)
+        let radius = self.mapRadius
         let maxHits = 10
         landmarkFinder.search(aroundLocation: location, inRadius: radius, maxHits: maxHits) { (landmarks, error) in
             if let error = error {
