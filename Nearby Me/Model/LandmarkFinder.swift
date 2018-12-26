@@ -11,18 +11,20 @@ import CoreLocation
 
 class LandmarkFinder {
     
+    private let serviceUrl = "https://en.wikipedia.org/w/api.php?action=query&formatversion=2&prop=info%7Ccoordinates%7Cpageimages%7Cpageterms&inprop=url&colimit=50&piprop=thumbnail&pithumbsize=144&pilimit=50&wbptterms=description&generator=geosearch&ggscoord=37.33233141%7C-122.03121860&ggsradius=1000&ggslimit=10"
+    
     private var mockLandmarks: [Landmark] {
         get {
             let landmarks = [Landmark(data: [Landmark.keyPageId: 46318869,
                                              Landmark.keyTitle: "International Federation of Inventors' Associations",
-                                             Landmark.keyLatitude: 37.33182,
-                                             Landmark.keyLongitude: -122.03118,
-                                             Landmark.keyDistance: 57]),
+                                             Landmark.keyUrl: "https://en.wikipedia.org/wiki/International_Federation_of_Inventors%27_Associations",
+                                             Landmark.keyThumbnail: [Landmark.keySource: "https://upload.wikimedia.org/wikipedia/en/thumb/2/24/Ifia_logo.jpeg/144px-Ifia_logo.jpeg"],
+                                             Landmark.keyCoordinates: [Landmark.keyLatitude: 37.33182, Landmark.keyLongitude: -122.03118]]),
                              Landmark(data: [Landmark.keyPageId: 6400662,
                                              Landmark.keyTitle: "Saint Joseph of Cupertino Parish",
-                                             Landmark.keyLatitude: 37.324204,
-                                             Landmark.keyLongitude: -122.032001,
-                                             Landmark.keyDistance: 906.4])]
+                                             Landmark.keyUrl: "https://en.wikipedia.org/wiki/Saint_Joseph_of_Cupertino_Parish",
+                                             Landmark.keyThumbnail: [Landmark.keySource: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/St_joseph_of_cupertino_parish_front.JPG/144px-St_joseph_of_cupertino_parish_front.JPG"],
+                                             Landmark.keyCoordinates: [Landmark.keyLatitude: 37.324204, Landmark.keyLongitude: -122.032001]])]
             return landmarks
         }
     }
