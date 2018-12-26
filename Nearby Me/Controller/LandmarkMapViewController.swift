@@ -1,5 +1,5 @@
 //
-//  LandmarkViewController.swift
+//  LandmarkMapViewController.swift
 //  Nearby Me
 //
 //  Created by Robert Witt on 25.12.18.
@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class LandmarkViewController: UIViewController, CLLocationManagerDelegate {
+class LandmarkMapViewController: UIViewController, CLLocationManagerDelegate {
     
     //MARK: Properties & Outlets
     
@@ -131,7 +131,7 @@ class LandmarkViewController: UIViewController, CLLocationManagerDelegate {
 
 //MARK: - Map View Delegate
 
-extension LandmarkViewController: MKMapViewDelegate {
+extension LandmarkMapViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         guard !annotation.isKind(of: MKUserLocation.self) else {
@@ -169,7 +169,7 @@ extension LandmarkViewController: MKMapViewDelegate {
 
 //MARK: - Location Manager Delegate
 
-extension LandmarkViewController {
+extension LandmarkMapViewController {
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         switch status {
