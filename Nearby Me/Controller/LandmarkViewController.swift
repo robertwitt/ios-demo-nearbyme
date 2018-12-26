@@ -110,6 +110,7 @@ class LandmarkViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     private func addLandmarksToMap(_ landmarks: [Landmark]) {
+        mapView.removeAnnotations(mapView.annotations)
         mapView.addAnnotations(landmarks)
     }
     
@@ -140,9 +141,9 @@ extension LandmarkViewController: MKMapViewDelegate {
                 if let error = error {
                     self.showAlertWithError(error)
                 } else {
-                    view.image = image
+                    view.leftCalloutAccessoryView = UIImageView(image: image)
                 }
-                networkActivityEnabled = false
+                self.networkActivityEnabled = false
             }
         }
     }

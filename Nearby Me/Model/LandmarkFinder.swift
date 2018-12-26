@@ -43,7 +43,7 @@ class LandmarkFinder {
                           "inprop": "url",
                           "colimit": "50",
                           "piprop": "thumbnail",
-                          "pithumbsize": "144",
+                          "pithumbsize": "72",
                           "pilimit": "50",
                           "wbptterms": "description",
                           "generator": "geosearch",
@@ -51,7 +51,7 @@ class LandmarkFinder {
                           "ggsradius": String(radius > 10000 ? 10000 : radius),
                           "ggslimit": String(maxHits)]
         
-        sendGet(toEndpoint: LandmarkFinder.endpoint, parameters: parameters) { (response) in
+        Alamofire.request(LandmarkFinder.endpoint, method: .get, parameters: parameters).responseJSON { (response) in
             var landmarks = [Landmark]()
             if (response.result.isSuccess) {
                 let result = JSON(response.result.value!)
@@ -59,21 +59,21 @@ class LandmarkFinder {
             }
             completion(landmarks, response.result.error)
         }
-        
-        
     }
     
-    func loadImage(atUrl url: URL, completion: (_: UIImage?, _: Error?) -> Void) {
-        // TODO: Invoke URL and return image in closure
-    }
-    
-    private func sendGet(toEndpoint url: String, parameters: [String: String], completion: @escaping (_: DataResponse<Any>) -> Void) {
-        Alamofire.request(url, method: .get, parameters: parameters).responseJSON(completionHandler: completion)
+    func loadImage(atUrl url: URL, completion: @escaping (_: UIImage?, _: Error?) -> Void) {
+        Alamofire.request(url).responseData { (response) in
+            var image: UIImage?
+            if response.result.isSuccess {
+                let imageData = response.result.value!
+                image = UIImage(data: imageData)
+            }
+            completion(image, response.result.error)
+        }
     }
     
     private func parseLandmarks(fromQueryResult result: JSON) -> [Landmark] {
         var landmarks = [Landmark]()
-        print(result)
         let pages = result["query"]["pages"].arrayValue
         for page in pages {
             landmarks.append(Landmark(data: page))
