@@ -48,7 +48,7 @@ class LandmarkFinder {
                           "wbptterms": "description",
                           "generator": "geosearch",
                           "ggscoord": "\(String(location.coordinate.latitude))|\(String(location.coordinate.longitude))",
-                          "ggsradius": String(radius),
+                          "ggsradius": String(radius > 10000 ? 10000 : radius),
                           "ggslimit": String(maxHits)]
         
         sendGet(toEndpoint: LandmarkFinder.endpoint, parameters: parameters) { (response) in
@@ -73,6 +73,7 @@ class LandmarkFinder {
     
     private func parseLandmarks(fromQueryResult result: JSON) -> [Landmark] {
         var landmarks = [Landmark]()
+        print(result)
         let pages = result["query"]["pages"].arrayValue
         for page in pages {
             landmarks.append(Landmark(data: page))

@@ -48,11 +48,11 @@ class LandmarkViewController: UIViewController, CLLocationManagerDelegate {
     //MARK: Actions
     
     @IBAction func locateTapped(_ sender: UIBarButtonItem) {
-        
+        startLocatingUser()
     }
     
     @IBAction func refreshMapTapped(_ sender: UIBarButtonItem) {
-        
+        startFindingLandmarksInLocation(CLLocation(latitude: mapView.centerCoordinate.latitude, longitude: mapView.centerCoordinate.longitude))
     }
     
     //MARK: Manage Locations
@@ -98,7 +98,7 @@ class LandmarkViewController: UIViewController, CLLocationManagerDelegate {
     private func startFindingLandmarksInLocation(_ location: CLLocation) {
         networkActivityEnabled = true
         let radius = self.mapRadius
-        let maxHits = 10
+        let maxHits = 50
         landmarkFinder.search(aroundLocation: location, inRadius: radius, maxHits: maxHits) { (landmarks, error) in
             if let error = error {
                 self.showAlertWithError(error)
@@ -135,13 +135,15 @@ extension LandmarkViewController: MKMapViewDelegate {
         }
         networkActivityEnabled = true
         let landmark = view.annotation as! Landmark
-        landmarkFinder.loadImage(atUrl: landmark.thumbnailUrl!) { (image, error) in
-            if let error = error {
-                self.showAlertWithError(error)
-            } else {
-                view.image = image
+        if let thumbnailUrl = landmark.thumbnailUrl {
+            landmarkFinder.loadImage(atUrl: thumbnailUrl) { (image, error) in
+                if let error = error {
+                    self.showAlertWithError(error)
+                } else {
+                    view.image = image
+                }
+                networkActivityEnabled = false
             }
-            networkActivityEnabled = false
         }
     }
     
