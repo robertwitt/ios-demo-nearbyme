@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreLocation
+import SwiftyJSON
 
 class Landmark: NSObject {
     
@@ -25,28 +26,24 @@ class Landmark: NSObject {
     static let keyUrl = "fullurl"
     static let keyWidth = "width"
     
-    let data: [String: Any]
+    let data: JSON
     
     var shortDescription: String? {
         get {
-            if let terms = data[Landmark.keyTerms] as? [String: Any], let description = terms[Landmark.keyDescription] as? String {
-                return description
-            } else {
-                return nil
-            }
+            return data[Landmark.keyTerms][Landmark.keyDescription].string
         }
     }
     
     var distance: CLLocationDistance? {
         get {
-            return data[Landmark.keyDistance] as? CLLocationDistance
+            return data[Landmark.keyDistance].double
         }
     }
     
     var location: CLLocation? {
         get {
-            if let coordinates = data[Landmark.keyCoordinates] as? [String : Any], let latitude = coordinates[Landmark.keyLatitude], let longitude = coordinates[Landmark.keyLongitude] {
-                return CLLocation(latitude: latitude as! CLLocationDegrees, longitude: longitude as! CLLocationDegrees)
+            if let latitude = data[Landmark.keyCoordinates][Landmark.keyLatitude].double, let longitude = data[Landmark.keyCoordinates][Landmark.keyLongitude].double {
+                return CLLocation(latitude: latitude, longitude: longitude)
             } else {
                 return nil
             }
@@ -55,20 +52,20 @@ class Landmark: NSObject {
     
     var pageId: String? {
         get {
-            return data[Landmark.keyPageId] as? String
+            return data[Landmark.keyPageId].string
         }
     }
     
     var title: String? {
         get {
-            return data[Landmark.keyTitle] as? String
+            return data[Landmark.keyTitle].string
         }
     }
     
     var thumbnailUrl: URL? {
         get {
-            if let thumbnail = data[Landmark.keyThumbnail] as? [String: Any], let source = thumbnail[Landmark.keySource] as? String {
-                return URL(string: source)
+            if let thumbnailSource = data[Landmark.keyThumbnail][Landmark.keySource].string {
+                return URL(string: thumbnailSource)
             } else {
                 return nil
             }
@@ -77,7 +74,7 @@ class Landmark: NSObject {
     
     var url: URL? {
         get {
-            if let url = data[Landmark.keyUrl] as? String {
+            if let url = data[Landmark.keyUrl].string {
                 return URL(string: url)
             } else {
                 return nil
@@ -85,7 +82,7 @@ class Landmark: NSObject {
         }
     }
     
-    init(data: [String: Any]) {
+    init(data: JSON) {
         self.data = data
     }
     
