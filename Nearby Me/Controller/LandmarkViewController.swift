@@ -45,6 +45,19 @@ class LandmarkViewController: UIViewController, CLLocationManagerDelegate {
         enableLocationService()
     }
     
+    //MARK: Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+        case "LandmarkDetail":
+            let annotationView = sender as! MKAnnotationView
+            let landmarkDetailViewController = (segue.destination as! UINavigationController).topViewController as! LandmarkDetailViewController
+            landmarkDetailViewController.landmark = annotationView.annotation as? Landmark
+            break
+        default:
+            break
+        }
+    }
+    
     //MARK: Actions
     
     @IBAction func locateTapped(_ sender: UIBarButtonItem) {
@@ -149,7 +162,7 @@ extension LandmarkViewController: MKMapViewDelegate {
     }
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-        //TODO: Display landmark details
+        self.performSegue(withIdentifier: "LandmarkDetail", sender: view)
     }
     
 }
