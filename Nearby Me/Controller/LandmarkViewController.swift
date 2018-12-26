@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class ViewController: UIViewController {
+class LandmarkViewController: UIViewController {
 
     @IBOutlet weak var mapView: MKMapView!
     
